@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>{{ finalName }}</h1>
-  </div>
+  <h1>{{ fullname }}</h1>
 </template>
 
 <script>
@@ -12,12 +10,12 @@ export default {
     firstname: "Aretha",
   }),
   computed: {
-    finalName: function () {
+    fullname: function () {
       return this.lastname + " " + this.firstname;
     },
   },
   watch: {
-    finalName: function (val) {
+    fullname: function (val) {
       alert(val);
     },
   },
