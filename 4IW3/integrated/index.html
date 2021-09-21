@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      console.log(Vue);
+    </script>
+  </head>
+  <body>
+    <div id="app">Hello {{name}}</div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          name: "Karl",
+        },
+      });
+
+      const obj = {
+        foo: "bar",
+        amfoo: () => console.log("amfoo", this) || this.foo,
+        mfoo: function () {
+          console.log("mfoo", this);
+          return this.foo;
+        },
+        mmfoo: function () {
+          return (() => this.foo)();
+        },
+      };
+
+      console.log(obj.foo);
+      console.log(obj.amfoo());
+      console.log(obj.mfoo());
+      console.log(obj.mmfoo());
+    </script>
+  </body>
+</html>
