@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="checked = !checked">
+  <button v-bind:class="className" v-on:click="checked = !checked">
     {{ title }}
   </button>
 </template>
@@ -11,6 +11,11 @@ export default {
     checked: false,
     title: "Unchecked",
   }),
+  computed: {
+    className: function () {
+      return this.checked ? "checked" : "unchecked";
+    },
+  },
   watch: {
     checked: function (val) {
       this.title = val ? "Checked" : "Unchecked";
@@ -18,3 +23,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.checked {
+  color: green;
+}
+.unchecked {
+  color: red;
+}
+</style>

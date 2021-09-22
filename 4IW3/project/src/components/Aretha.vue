@@ -17,7 +17,7 @@ export default {
     },
   },
   watch: {
-    finalName: function (val) {
+    finalName: (val) => {
       alert(val);
     },
   },
