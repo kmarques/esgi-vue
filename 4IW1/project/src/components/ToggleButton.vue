@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="checked = !checked">
+  <button @click.alt="checked = false" v-on:click.exact="checked = !checked">
     {{ title }}
     {{ yatitle }}
   </button>
