@@ -7,12 +7,16 @@
       bouton à “Show”, un clique de nouveau fera l’opération inverse. Un clique
       sur un item inversera le status “completed” de celui-ci.
     </p>
-    <button>Hide</button>
+    <button @click="filter = !filter">{{ buttonTitle }}</button>
     <ul>
-      <li>Knife not completed</li>
-      <li>Fork completed</li>
-      <li>Plate not completed</li>
-      <li>Spoon completed</li>
+      <li
+        @click="tools[name] = !value"
+        v-for="(value, name) in tools"
+        v-show="!filter || !value"
+        :key="name"
+      >
+        {{ name }} {{ !value ? "not " : "" }}completed
+      </li>
     </ul>
   </div>
 </template>
@@ -29,5 +33,10 @@ export default {
     },
     filter: false,
   }),
+  computed: {
+    buttonTitle: function () {
+      return this.filter ? "Show" : "Hide";
+    },
+  },
 };
 </script>
