@@ -31,6 +31,7 @@
     <TpDirective />-->
     {{ "2021-09-21" | dateFormat("d-y-m") }}
     <Lifecycle v-if="alert1" />
+    <tp-todo-list />
   </div>
 </template>
 
@@ -42,6 +43,7 @@ import List from "./components/List.vue";
 //import Form from "./components/Form.vue";
 //import TpDirective from "./components/TpDirective.vue";
 import Lifecycle from "./components/Lifecycle.vue";
+import TpTodoList from "./components/TpTodoList.vue";
 
 export default {
   name: "App",
@@ -53,6 +55,7 @@ export default {
     //TpDirective,
     Button,
     Lifecycle,
+    TpTodoList,
   },
   data: () => ({
     alert1: false,
