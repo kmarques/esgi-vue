@@ -46,3 +46,4 @@ yarn lint
 
 ### Cours 3
 1) TP Directive
+2) [Filtres](https://vuejs.org/v2/guide/filters.html)
