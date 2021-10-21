@@ -7,11 +7,15 @@
       bouton à “Show”, un clique de nouveau fera l’opération inverse. Un clique
       sur un item inversera le status “completed” de celui-ci.
     </p>
-    <button>Hide</button>
+    <button @click="filter = !filter">
+      {{ buttonTitle | capitalize | trunc(2) }}
+    </button>
     <ul>
-      <li><a>Knife / completed</a></li>
-      <li><a>Fork / not completed</a></li>
-      <li><a>Plate / completed</a></li>
+      <li v-for="(value, name) in tools" :key="name" v-show="!filter || !value">
+        <a href="#" @click.prevent="tools[name] = !value"
+          >{{ name }} / {{ value ? "completed" : "incompleted" }}</a
+        >
+      </li>
     </ul>
   </div>
 </template>
@@ -27,6 +31,48 @@ export default {
     },
     filter: false,
   }),
+  computed: {
+    buttonTitle() {
+      return this.filter ? "show" : "hide";
+    },
+  },
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
+  created() {
+    console.log("created");
+  },
+  beforeMount() {
+    console.log("beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
+  },
+  updated() {
+    console.log("updated");
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+  },
+  destroyed() {
+    console.log("destroyed");
+  },
+  filters: {
+    capitalize(value) {
+      return value
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(" ");
+    },
+    trunc(value, length) {
+      return value.slice(0, length);
+    },
+  },
 };
 </script>
 

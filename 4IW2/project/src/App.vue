@@ -24,7 +24,8 @@
       ]"
     />
     <Form />
-    <TPDirective />
+    <button @click="showTp = !showTp">Toggle Tp</button>
+    <TPDirective v-if="showTp" />
   </div>
 </template>
 
@@ -48,6 +49,9 @@ export default {
     Form,
     TPDirective,
   },
+  data: () => ({
+    showTp: true,
+  }),
   methods: {
     handleClick: function () {
       console.log("click me");
