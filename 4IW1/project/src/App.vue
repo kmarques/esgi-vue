@@ -28,6 +28,8 @@
     />
     <Form />
     <ToggleButton />
+    <button @click="showTp = !showTp">toggle tp</button>
+    <TpDirective v-if="showTp" />
   </div>
 </template>
 
@@ -38,6 +40,7 @@ import Button from "./components/Button.vue";
 import Collapsable from "./components/Collapsable.vue";
 import Form from "./components/Form.vue";
 import ToggleButton from "./components/ToggleButton.vue";
+import TpDirective from "./components/TpDirective.vue";
 
 export default {
   name: "App",
@@ -48,8 +51,9 @@ export default {
     List,
     Form,
     ToggleButton,
+    TpDirective,
   },
-  data: () => ({ checked: false }),
+  data: () => ({ checked: false, showTp: false }),
   methods: {
     handleClick: () => console.log("click me"),
     handleAlert: () => alert("alert"),

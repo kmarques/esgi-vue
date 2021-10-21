@@ -7,11 +7,18 @@
       bouton à “Show”, un clique de nouveau fera l’opération inverse. Un clique
       sur un item inversera le status “completed” de celui-ci.
     </p>
-    <button>Hide</button>
+    <button @click="filters = !filters">
+      {{ buttonTitle | capitalize | trunc(2) }}
+    </button>
     <ul>
-      <li>Knife not completed</li>
-      <li>Fork completed</li>
-      <li>Spoon not completed</li>
+      <li
+        v-show="!filters || !value"
+        @click="tools[key] = !tools[key]"
+        v-for="(value, key) in tools"
+        :key="key"
+      >
+        {{ key }} {{ !value ? "not " : "" }}completed
+      </li>
     </ul>
   </div>
 </template>
@@ -27,6 +34,46 @@ export default {
     },
     filters: false,
   }),
+  filters: {
+    capitalize(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+    trunc(value, length) {
+      if (!value) return "";
+      return value.length > length ? value.slice(0, length) + "..." : value;
+    },
+  },
+  computed: {
+    buttonTitle() {
+      return this.filters ? "show" : "hide";
+    },
+  },
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
+  created() {
+    console.log("created");
+  },
+  beforeMount() {
+    console.log("beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
+  },
+  updated() {
+    console.log("updated");
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+  },
+  destroyed() {
+    console.log("destroyed");
+  },
 };
 </script>
 
