@@ -13,9 +13,15 @@
 export default {
   name: "ItemTodo",
   props: {
-    onEdit: Function,
-    onDelete: Function,
     item: Object,
+  },
+  methods: {
+    onEdit() {
+      this.$emit("edit", this.item);
+    },
+    onDelete() {
+      this.$emit("delete", this.item);
+    },
   },
 };
 </script>

@@ -8,15 +8,13 @@
 <script>
 export default {
   name: "FormTodo",
-  props: {
-    onSubmit: Function,
-  },
+  props: {},
   data: () => ({
     title: "",
   }),
   methods: {
     handleSubmit() {
-      this.onSubmit(this.title);
+      this.$emit("submit", this.title);
       this.title = "";
     },
   },
