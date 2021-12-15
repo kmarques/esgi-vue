@@ -31,6 +31,68 @@
     <button @click="showTp = !showTp">toggle tp</button>
     <TpDirective v-if="showTp" />
     <TPTodoList />
+    <h1>Todo List (event custom)</h1>
+    <TPTodoListCustom />
+    <h3>Gallery</h3>
+    <gallery-field
+      :items="[
+        { id: 1, title: 'test' },
+        { id: 2, title: 'test2' },
+      ]"
+      v-model="gallery"
+    />
+    {{ gallery }}
+    <h1>Slots</h1>
+    <CollapsableSlot>
+      <template v-slot:title="{ isOpen }">
+        <h1>Title Custom ({{ isOpen ? "opened" : "closed" }})</h1>
+      </template>
+      <template slot="description">
+        <table>
+          <tbody>
+            <tr>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
+    </CollapsableSlot>
+    <h1>Todo List (DI)</h1>
+    <TodoListContainer>
+      <TodoListDI />
+    </TodoListContainer>
   </div>
 </template>
 
@@ -43,6 +105,11 @@ import Form from "./components/Form.vue";
 import ToggleButton from "./components/ToggleButton.vue";
 import TpDirective from "./components/TpDirective.vue";
 import TPTodoList from "./components/TPTodoListBackend.vue";
+import TPTodoListCustom from "./components/TodoList/TPTodoList.vue";
+import GalleryField from "./components/lib/GalleryField.vue";
+import CollapsableSlot from "./components/lib/Collapsable.vue";
+import TodoListContainer from "./components/TodoList/DependencyInjection/TPTodoListContainer.vue";
+import TodoListDI from "./components/TodoList/DependencyInjection/TPTodoList.vue";
 
 export default {
   name: "App",
@@ -55,8 +122,13 @@ export default {
     ToggleButton,
     TpDirective,
     TPTodoList,
+    TPTodoListCustom,
+    GalleryField,
+    CollapsableSlot,
+    TodoListContainer,
+    TodoListDI,
   },
-  data: () => ({ checked: false, showTp: false }),
+  data: () => ({ checked: false, showTp: false, gallery: null }),
   methods: {
     handleClick: () => console.log("click me"),
     handleAlert: () => alert("alert"),
