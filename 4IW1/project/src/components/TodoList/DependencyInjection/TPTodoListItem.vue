@@ -12,6 +12,7 @@
     </div>
     {{ item.completed ? "completed" : "not" }}
     <button @click="todoList.deleteTodo(item)">X</button>
+    <button @click="$router.push('/di/' + item.id)">Show</button>
   </li>
 </template>
 

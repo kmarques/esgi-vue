@@ -26,7 +26,7 @@ const defaultTodos = [
 export default {
   name: "TPTodoListContainer",
   data: () => ({
-    todos: [],
+    todos: defaultTodos,
   }),
   mounted() {
     this.todos = defaultTodos;
@@ -53,13 +53,21 @@ export default {
       );
     },
   },
+  computed: {
+    provTodos: function () {
+      return this.todos;
+    },
+  },
   provide() {
     return {
+      todos: this.provTodos,
       todoList: {
-        todos: this.todos,
+        todos: this.provTodos,
         addTodo: this.addTodo,
         editTodo: this.editTodo,
         deleteTodo: this.deleteTodo,
+        getTodos: () => this.provTodos,
+        getTodo: (id) => this.todos.find((td) => td.id === id),
       },
     };
   },

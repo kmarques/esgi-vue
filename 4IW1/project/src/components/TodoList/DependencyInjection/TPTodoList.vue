@@ -2,11 +2,7 @@
   <div>
     <input v-model="title" @keyup.enter="todoList.addTodo" />
     <ul>
-      <tp-todo-list-item
-        v-for="todo in todoList.todos"
-        :key="todo.id"
-        :item="todo"
-      />
+      <tp-todo-list-item v-for="todo in todos" :key="todo.id" :item="todo" />
     </ul>
   </div>
 </template>
@@ -21,7 +17,7 @@ export default {
   data: () => ({
     title: "",
   }),
-  inject: ["todoList"],
+  inject: ["todoList", "todos"],
 };
 </script>
 

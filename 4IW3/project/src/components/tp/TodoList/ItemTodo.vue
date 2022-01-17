@@ -6,6 +6,7 @@
       >{{ item.title }}</span
     >
     <button @click="onDelete">X</button>
+    <button @click="onShow">Show</button>
   </li>
 </template>
 
@@ -21,6 +22,14 @@ export default {
     },
     onDelete() {
       this.$emit("delete", this.item);
+    },
+    onShow() {
+      this.$router.push({
+        name: "TodoListItem",
+        params: {
+          id: this.item.id,
+        },
+      });
     },
   },
 };
