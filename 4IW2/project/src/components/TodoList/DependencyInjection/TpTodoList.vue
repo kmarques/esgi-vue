@@ -7,7 +7,7 @@
     />
     <ul>
       <tp-todo-list-event-item
-        v-for="todo in localTodos"
+        v-for="todo in todos"
         :key="todo.id"
         :todo="todo"
         @edit="todoManager.editTodo"
@@ -24,10 +24,5 @@ export default {
   components: { TpTodoListEventItem },
   name: "TodoList",
   inject: ["todoManager", "todos"],
-  computed: {
-    localTodos() {
-      return this.todos;
-    },
-  },
 };
 </script>

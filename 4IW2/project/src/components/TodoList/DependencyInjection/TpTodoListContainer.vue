@@ -60,6 +60,9 @@ export default {
               this.todos.splice(this.todos.indexOf(todo), 1);
             });
         },
+        get(id) {
+          return this.todos.find((td) => td.id === id);
+        },
       },
     };
   },
@@ -67,7 +70,8 @@ export default {
     fetch("http://localhost:3000/todos")
       .then((response) => response.json())
       .then((data) => {
-        this.todos = data;
+        this.todos.slice(0, this.todos.length);
+        this.todos.push(...data);
       });
   },
 };
