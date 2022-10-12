@@ -31,6 +31,7 @@ const buttonStyle = computed(() => {
   return {
     backgroundColor: props.color,
     borderRadius: props.rounded ? "50%" : "0",
+    color: "cyan",
   };
 });
 </script>

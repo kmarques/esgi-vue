@@ -12,14 +12,13 @@ defineProps({
 <script>
 export default {
   name: "HelloWorld",
+  props: {
+    msg: {
+      type: String,
+      required: true,
+    },
+  },
   setup() {
-    const props = defineProps({
-      msg: {
-        type: String,
-        required: true,
-      },
-    });
-    return {...props};
   },
 };
 </script>
