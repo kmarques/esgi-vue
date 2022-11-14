@@ -54,6 +54,7 @@ const buttonObject = {
     color: "red",
     rounded: true,
     onClick: () => alert("fifi"),
+    masked: true,
   },
   loulou: {
     color: "green",
@@ -177,6 +178,14 @@ export default {
         <MyButton :title="value" />
       </div>
       <br />
+      Template<br />
+      <template v-for="(value, key) in buttonObject" :key="key">
+        <div v-if="!value.masked">
+          {{ index }} - {{ key }} - {{ value }}
+          <MyButton :title="key" v-bind="value" />
+        </div>
+      </template>
+      Iterate Object<br />
       <div v-for="(value, key, index) in buttonObject" :key="key">
         {{ index }} - {{ key }} - {{ value }}
         <MyButton :title="key" :color="value.color" :rounded="value.rounded" />

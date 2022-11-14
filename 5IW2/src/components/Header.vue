@@ -1,46 +1,67 @@
 <template>
-  <button
-    v-bind:style="buttonStyle"
-    v-on:click="handleClick"
-    v-on:dblclick="onClick"
-  >
+  <h1 :style="headerStyle">
     {{ title }}
-  </button>
+  </h1>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import {
+  onMounted,
+  onBeforeMount,
+  onUpdated,
+  onBeforeUpdate,
+  onBeforeUnmount,
+  onUnmounted,
+  watch,
+  computed,
+} from "vue";
+
+onMounted(() => {
+  console.log("mounted");
+});
+
+onBeforeMount(() => {
+  console.log("before mount");
+});
+
+onUpdated(() => {
+  console.log("updated");
+});
+
+onBeforeUpdate(() => {
+  console.log("before update");
+});
+
+onBeforeUnmount(() => {
+  console.log("before unmount");
+});
+
+onUnmounted(() => {
+  console.log("unmounted");
+});
 
 const props = defineProps({
-  onClick: {
-    type: Function,
-    required: true,
-  },
   title: {
     type: String,
     required: true,
   },
-  rounded: {
+  isGreen: {
     type: Boolean,
     default: false,
   },
-  color: {
-    type: String,
-    default: "blue",
-    validator: (value) => {
-      return ["blue", "red", "green"].includes(value);
-    },
-  },
 });
 
-function handleClick($event) {
-  window.alert("Hello");
-  props.onClick();
-}
-const buttonStyle = computed(() => {
+watch(
+  () => props.isGreen,
+  (newValue, oldValue) => {
+    console.log("isGreen changed", newValue, oldValue);
+  }
+);
+
+const headerStyle = computed(() => {
   return {
-    backgroundColor: props.color,
-    borderRadius: props.rounded ? "50%" : "0",
+    backgroundColor: props.isGreen ? "green" : "blue",
+    color: "white",
   };
 });
 </script>

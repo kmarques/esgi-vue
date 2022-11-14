@@ -2,9 +2,11 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import MyButton from "./components/MyButton.vue";
+import MyHeader from "./components/Header.vue";
 import { ref, reactive } from "vue";
 
 const isGreen = ref(false);
+const isYellow = ref(false);
 const state = reactive({
   isGreen: false,
 });
@@ -13,6 +15,33 @@ function toggleTheme() {
   isGreen.value = !isGreen.value;
   state.isGreen = !state.isGreen;
 }
+function toggleThemeYellow() {
+  isYellow.value = !isYellow.value;
+}
+
+const buttonsArray = [
+  {
+    title: "Button 1",
+    bgColor: "blue",
+    onClick: () => {
+      console.log("Button 1 clicked");
+    },
+  },
+  {
+    title: "Button 2",
+    rounded: true,
+    onClick: () => {
+      console.log("Button 2 clicked");
+    },
+  },
+  {
+    title: "Button 3",
+    color: "red",
+    onClick: () => {
+      console.log("Button 3 clicked");
+    },
+  },
+];
 </script>
 
 <!--
@@ -64,6 +93,7 @@ export default {
 -->
 
 <template>
+  <MyHeader v-if="!isYellow" title="My header" :isGreen="isGreen" />
   <header>
     <img
       alt="Vue logo"
@@ -76,10 +106,27 @@ export default {
     <div :class="['wrapper', { 'bg-green': isGreen }]">
       <p>Theme isGreen: {{ isGreen }} {{ state.isGreen }}</p>
       <MyButton title="Toggle Theme" rounded :onClick="toggleTheme" />
-      <MyButton title="Hello" rounded />
-      <my-button title="Hello 2" color="red" />
-      <my-button title="Hello 3" color="yellow" />
+      <MyButton
+        title="Toggle Theme Yellow"
+        rounded
+        :onClick="toggleThemeYellow"
+      />
+
+      <template
+        v-for="(button, index) in buttonsArray"
+        :key="button.title + index"
+      >
+        <MyButton v-if="!button.rounded" v-bind="button" />
+      </template>
+
       <HelloWorld msg="You did it2!" msg2="Coucou" />
+      <div v-if="isGreen">
+        It's green time (if)
+        <div v-if="isYellow">And Yellow time</div>
+      </div>
+      <div v-else-if="isYellow">It's yellow time</div>
+      <div v-else>Time to rest</div>
+      <div v-show="isGreen">It's green time (show)</div>
     </div>
   </header>
 
