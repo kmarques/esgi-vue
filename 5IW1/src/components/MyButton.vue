@@ -15,11 +15,11 @@ defineProps({
       return ["blue", "red", "green"].includes(value);
     },
   },
+  onClick: {
+    type: Function,
+    required: true,
+  },
 });
-
-function alert() {
-  window.alert("test");
-}
 </script>
 
 <!--
@@ -89,15 +89,12 @@ function alert() {
 
 <template>
   <button
-    v-bind:style="{
+    :style="{
       backgroundColor: color,
       borderRadius: rounded ? '50%' : '0',
     }"
-    v-on:click="alert('test', $event)"
+    @click="onClick"
   >
     {{ title }}
   </button>
 </template>
-
-const listener = ($event) => alert('test'); addEventListener("click", listener);
-removeEventListener("click", listener);

@@ -2,7 +2,70 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import MyButton from "./components/MyButton.vue";
+import { ref, reactive } from "vue";
+
 const content = "<h1>Content</h1>";
+
+const isMagenta = ref(false);
+
+const theme = reactive({
+  color: "white",
+  backgroundColor: "cyan",
+});
+
+function toggleMagenta() {
+  isMagenta.value = !isMagenta.value;
+}
+
+function toggleColor() {
+  if (theme.color === "white") {
+    theme.color = "black";
+    theme.backgroundColor = "yellow";
+  } else {
+    theme.color = "white";
+    theme.backgroundColor = "cyan";
+  }
+}
+
+const buttonsArray = [
+  {
+    title: "Button 1",
+    rounded: true,
+    color: "blue",
+  },
+  {
+    title: "Hello 2 - toggle color",
+    rounded: false,
+    color: "red",
+    onClick: toggleColor,
+  },
+  {
+    title: "Hello 3 - toggle magenta",
+    rounded: true,
+    color: "green",
+    onClick: toggleMagenta,
+  },
+];
+
+const buttonsObject = {
+  button1: {
+    title: "Button 1",
+    rounded: true,
+    color: "blue",
+  },
+  button2: {
+    title: "Hello 2 - toggle color",
+    rounded: false,
+    color: "red",
+    onClick: toggleColor,
+  },
+  button3: {
+    title: "Hello 3 - toggle magenta",
+    rounded: true,
+    color: "green",
+    onClick: toggleMagenta,
+  },
+};
 </script>
 
 <!--
@@ -49,7 +112,11 @@ const content = "<h1>Content</h1>";
 -->
 
 <template>
-  <header>
+  <header
+    :style="{
+      backgroundColor: isMagenta ? 'magenta' : 'green',
+    }"
+  >
     <img
       alt="Vue logo"
       class="logo"
@@ -59,15 +126,30 @@ const content = "<h1>Content</h1>";
     />
 
     <div class="wrapper">
-      <MyButton title="Hello" />
-      <my-button title="Hello 2" rounded color="cyan" />
-      <my-button title="Hello 3" :rounded="true" />
-      <HelloWorld msg="Yodu did it!" msg2="Test" />
+      <template
+        v-for="(button, index) in buttonsArray"
+        :key="button.title + index"
+      >
+        <MyButton v-bind="button" v-if="!button.rounded" />
+      </template>
+      <MyButton
+        v-for="(button, prop, index) in buttonsObject"
+        :key="button.title + prop + index"
+        v-bind="button"
+      />
+      <div v-if="isMagenta">
+        It's magenta
+        <div v-if="theme.backgroundColor === 'cyan'">and cyan</div>
+      </div>
+      <div v-else-if="theme.backgroundColor === 'cyan'">It's cyan</div>
+      <div v-else>It's not magenta</div>
+      <div v-show="isMagenta">It's magenta</div>
+      <HelloWorld msg="You did it!" msg2="Test" />
       <p v-html="content"></p>
     </div>
   </header>
 
-  <main>
+  <main :style="theme">
     <TheWelcome />
   </main>
 </template>
