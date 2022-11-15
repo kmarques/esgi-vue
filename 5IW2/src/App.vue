@@ -4,6 +4,7 @@ import TheWelcome from "./components/TheWelcome.vue";
 import MyButton from "./components/MyButton.vue";
 import MyHeader from "./components/Header.vue";
 import { ref, reactive } from "vue";
+import UserForm from "./components/UserForm.vue";
 
 const isGreen = ref(false);
 const isYellow = ref(false);
@@ -15,6 +16,7 @@ function toggleTheme() {
   isGreen.value = !isGreen.value;
   state.isGreen = !state.isGreen;
 }
+
 function toggleThemeYellow() {
   isYellow.value = !isYellow.value;
 }
@@ -94,6 +96,7 @@ export default {
 
 <template>
   <MyHeader v-if="!isYellow" title="My header" :isGreen="isGreen" />
+  <UserForm />
   <header>
     <img
       alt="Vue logo"

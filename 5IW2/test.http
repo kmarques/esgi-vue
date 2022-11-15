@@ -1,0 +1,10 @@
+POST http://localhost:5001/tasks
+Content-Type: application/json
+
+{
+  "title": "Buy milk",
+  "completed": false
+}
+
+###
+GET http://localhost:5001/tasks
