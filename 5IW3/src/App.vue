@@ -14,6 +14,7 @@ import {
   onBeforeUnmount,
   onUnmounted,
 } from "vue";
+import UserForm from "./components/UserForm.vue";
 
 const isYellow = ref(false);
 const count = ref(0);
@@ -119,6 +120,7 @@ const duckObject = {
 </script>
 
 <template>
+  <UserForm />
   <header>
     <img
       alt="Vue logo"
