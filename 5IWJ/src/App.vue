@@ -3,6 +3,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import MyButton from "./components/MyButton.vue";
 import { ref, reactive, computed } from "vue";
+import UserForm from "./components/UserForm.vue";
 
 const isRed = ref(false);
 const isGreen = ref(false);
@@ -149,6 +150,7 @@ export default {
 -->
 
 <template>
+  <UserForm />
   <header>
     <img
       alt="Vue logo"
