@@ -13,6 +13,7 @@ import {
   onBeforeUnmount,
   onUnmounted,
 } from "vue";
+import UserForm from "./components/UserForm.vue";
 
 const isRed = ref(false);
 const isGreen = ref(false);
@@ -97,6 +98,7 @@ const buttonsObject = {
 </script>
 
 <template>
+  <UserForm />
   <header>
     <img
       alt="Vue logo"
