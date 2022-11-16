@@ -3,6 +3,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import MyButton from "./components/MyButton.vue";
 import { ref, reactive } from "vue";
+import UserForm from "./components/UserForm.vue";
 
 const content = "<h1>Content</h1>";
 
@@ -112,6 +113,7 @@ const buttonsObject = {
 -->
 
 <template>
+  <UserForm />
   <header
     :style="{
       backgroundColor: isMagenta ? 'magenta' : 'green',
