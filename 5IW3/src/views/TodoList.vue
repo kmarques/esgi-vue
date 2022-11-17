@@ -18,4 +18,8 @@
         - Pouvoir modifier une tâche (title, completed)
         - Appliquer toutes modifications en base de données (json-server)
             npx json-server --watch db.json --port 3001
+
+    Part 3
+        - Réunir la gestion backend au sein d'un provider
+        - Remplacer les passages de fonctions en props par des events
 -->

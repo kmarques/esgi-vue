@@ -15,6 +15,10 @@ import {
   onUnmounted,
 } from "vue";
 import UserForm from "./components/UserForm.vue";
+import Modal from "./components/Modal.vue";
+import List from "./components/List.vue";
+import UserProvider from "./components/UserProvider.vue";
+import UserView from "./views/UserView.vue";
 
 const isYellow = ref(false);
 const count = ref(0);
@@ -120,7 +124,6 @@ const duckObject = {
 </script>
 
 <template>
-  <UserForm />
   <header>
     <img
       alt="Vue logo"
@@ -175,7 +178,28 @@ const duckObject = {
       </template>
       <h2>I love Yellow theme</h2>
     </template>
-    <TheWelcome />
+    <div v-if="false">
+      <List :items="duckArray"> </List>
+      <List :items="duckObject">
+        <template #item="{ item, index: property }">
+          <MyButton :title="property" v-bind="item" />
+        </template>
+      </List>
+      <List
+        :actions="{
+          add: false,
+          edit: false,
+          delete: false,
+        }"
+        :items="duckObject"
+        :conditional-render="(item, title) => title !== 'riri'"
+      >
+        <template #item="{ item, index: title }">
+          <span>{{ title }} - {{ JSON.stringify(item) }}</span>
+        </template>
+      </List>
+    </div>
+    <UserView />
   </main>
 </template>
 
