@@ -14,6 +14,8 @@ import {
   onUnmounted,
 } from "vue";
 import UserForm from "./components/UserForm.vue";
+import Modal from "./components/Modal.vue";
+import UserView from "./views/UserView.vue";
 
 const isRed = ref(false);
 const isGreen = ref(false);
@@ -95,10 +97,10 @@ const buttonsObject = {
     },
   },
 };
+const isOpen = ref(false);
 </script>
 
 <template>
-  <UserForm />
   <header>
     <img
       alt="Vue logo"
@@ -134,7 +136,47 @@ const buttonsObject = {
   </header>
 
   <main>
-    <TheWelcome />
+    <UserView />
+    <!--
+    <List
+      :items="['riri', 'fifi', 'loulou']"
+      :actions="{
+        add: true,
+        remove: false,
+        edit: true,
+      }"
+    />
+    <List
+      :items="[
+        { id: 1, name: 'riri' },
+        { id: 2, name: 'fifi' },
+        { id: 3, name: 'loulou' },
+      ]"
+      :actions="{
+        add: (newItem) =>
+          fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newItem),
+          }).then((response) => response.json()),
+        remove: (item) =>
+          fetch('http://localhost:3000/users/' + item.id, {
+            method: 'DELETE',
+          }).then((response) => response.json()),
+        edit: (item) =>
+          fetch('http://localhost:3000/users/' + item.id, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(item),
+          }).then((response) => response.json()),
+      }"
+    >
+    </List>
+    -->
   </main>
 </template>
 

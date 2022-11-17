@@ -12,4 +12,8 @@
         - Possibilité de supprimer une tâche
         - Synchronisation en base de données (json-server)
             npx json-server --watch db.json --port 5001
+
+    Part 3
+        - Réunir la gestion backend au sein d'un provider
+        - Remplacer les passages de fonctions en props par des events
 -->
