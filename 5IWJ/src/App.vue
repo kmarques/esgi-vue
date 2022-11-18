@@ -1,9 +1,8 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
 import MyButton from "./components/MyButton.vue";
 import { ref, reactive, computed } from "vue";
-import UserForm from "./components/UserForm.vue";
+import UserView from "./views/UserView.vue";
 
 const isRed = ref(false);
 const isGreen = ref(false);
@@ -150,7 +149,6 @@ export default {
 -->
 
 <template>
-  <UserForm />
   <header>
     <img
       alt="Vue logo"
@@ -196,7 +194,27 @@ export default {
   </header>
 
   <main>
-    <TheWelcome />
+    <UserView />
+    <!-- List
+      items="['riri', 'fifi', 'loulou']"
+      :actions="{
+        add: true,
+        delete: true,
+      }"
+    >
+      <template v-slot="{ item, onEdit, onDelete }">
+        <CartItem :item="item" @edit="onEdit" @delete="onDelete" />
+      </template>
+    </List>
+    <List items="['riri', 'fifi', 'loulou']">
+      <template v-slot="{ item, onEdit, onDelete }">
+        <ProductItem
+          :item="item"
+          @edit="(item) => fetchEdit(item).then(() => onEdit(item))"
+          @delete="(item) => fetchDelete(item).then(() => onDelete(item))"
+        />
+      </template>
+    </List -->
   </main>
 </template>
 
