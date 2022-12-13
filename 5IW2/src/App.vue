@@ -1,10 +1,9 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
-import MyButton from "./components/MyButton.vue";
+import MyButton from "./components/lib/MyButton.vue";
 import MyHeader from "./components/Header.vue";
 import { ref, reactive } from "vue";
-import UserForm from "./components/UserForm.vue";
+import UserView from "./views/UserView.vue";
 
 const isGreen = ref(false);
 const isYellow = ref(false);
@@ -95,8 +94,8 @@ export default {
 -->
 
 <template>
-  <MyHeader v-if="!isYellow" title="My header" :isGreen="isGreen" />
-  <UserForm />
+  <!--MyHeader v-if="!isYellow" title="My header" :isGreen="isGreen" /-->
+
   <header>
     <img
       alt="Vue logo"
@@ -134,7 +133,7 @@ export default {
   </header>
 
   <main>
-    <TheWelcome />
+    <UserView />
   </main>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <UserProvider v-slot="{ login }">
+  <UserProvider v-slot:default="{ login }">
     <Modal v-model="isOpen">
       <template v-slot:activator="{ on, attrs }">
         <button v-on="on" v-bind="attrs">Open modal</button>

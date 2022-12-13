@@ -1,9 +1,9 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
-import MyButton from "./components/MyButton.vue";
-import { ref, reactive } from "vue";
-import UserForm from "./components/UserForm.vue";
+import MyButton from "./components/lib/MyButton.vue";
+import { ref, reactive, watch, watchEffect } from "vue";
+import UserView from "./views/UserView.vue";
 
 const content = "<h1>Content</h1>";
 
@@ -12,6 +12,19 @@ const isMagenta = ref(false);
 const theme = reactive({
   color: "white",
   backgroundColor: "cyan",
+});
+
+watch(
+  () => {
+    return { ...theme, isMagenta: isMagenta.value };
+  },
+  () => {
+    console.log("isMangenta changed");
+  }
+);
+
+watchEffect(() => {
+  console.log("isMagenta changed: " + isMagenta.value + " " + theme.color);
 });
 
 function toggleMagenta() {
@@ -113,7 +126,6 @@ const buttonsObject = {
 -->
 
 <template>
-  <UserForm />
   <header
     :style="{
       backgroundColor: isMagenta ? 'magenta' : 'green',
@@ -152,7 +164,7 @@ const buttonsObject = {
   </header>
 
   <main :style="theme">
-    <TheWelcome />
+    <UserView />
   </main>
 </template>
 
