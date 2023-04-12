@@ -59,7 +59,11 @@ export default {
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-      <p v-html="content"></p>
+      <p v-track="'COUCOU-TAG'" v-html="content"></p>
+      <!-- Alternatives
+      <p v-track.click="'COUCOU-TAG'" v-html="content"></p>
+      <p v-track:COUCOU.click.mouseover v-html="content"></p>
+      -->
     </h3>
   </div>
 </template>

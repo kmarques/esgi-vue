@@ -98,6 +98,7 @@ export default {
 
   <header>
     <img
+      v-track="'IMG-LOGO'"
       alt="Vue logo"
       class="logo"
       src="./assets/logo.svg"

@@ -2,5 +2,12 @@ import { createApp } from "vue";
 import App from "./App.vue";
 
 import "./assets/main.css";
+import Tracker from "./plugins/Tracker";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+
+app.use(Tracker, {
+  AppId: "fqsdghnh",
+});
+
+app.mount("#app");
