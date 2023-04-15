@@ -3,13 +3,23 @@ const props = defineProps({
   msg: {
     type: String,
     required: true,
-  }
-})
+  },
+});
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
+    <h1 class="green" v-tracker:TAG.modifier.modifier2="'HELLOTITLE1245'">
+      {{ msg }}
+    </h1>
+    <!--
+    <h1 class="green" v-tracker="{ tag: 'HELLOTITLE1245', events: ['click'] }">
+      {{ msg }}
+    </h1>
+    <h1 class="green" v-tracker.click="'HELLOTITLE1245'">{{ msg }}</h1>
+    <h1 class="green" v-tracker.click.mouseover="'HELLOTITLE1245'">{{ msg }}</h1>
+    <h1 class="green" v-tracker:HELLOTITLE1245.click.mouseover>{{ msg }}</h1>
+    -->
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +

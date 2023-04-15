@@ -103,6 +103,7 @@ const isOpen = ref(false);
 <template>
   <header>
     <img
+      v-tracker="'IMGLOGO1245'"
       alt="Vue logo"
       class="logo"
       src="./assets/logo.svg"
