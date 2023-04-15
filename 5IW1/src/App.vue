@@ -132,6 +132,7 @@ const buttonsObject = {
     }"
   >
     <img
+      v-tracker="'IMG-LOGO'"
       alt="Vue logo"
       class="logo"
       src="./assets/logo.svg"
