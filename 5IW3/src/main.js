@@ -1,6 +1,13 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import Tracker from "./plugins/Tracker";
 
-import './assets/main.css'
+import "./assets/main.css";
 
-createApp(App).mount('#app')
+const app = createApp(App);
+app.use(Tracker, {
+  APP_ID: "5IW3",
+  service: "frontend2",
+});
+
+app.mount("#app");

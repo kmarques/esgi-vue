@@ -143,7 +143,11 @@ const duckObject = {
 
       <p>theme is yellow : {{ isYellow }} {{ count }}</p>
       <p>method: {{ getThemeClass() }} computed: {{ themeClass }}</p>
-      <MyButton title="Toggle theme" :onClick="toggleTheme" />
+      <MyButton
+        title="Toggle theme"
+        :onClick="toggleTheme"
+        v-track:E23DCZDERG.click
+      />
       <MyButton title="Add count" :onClick="add" />
       <my-button v-if="isYellow" title="Hello2" v-bind:rounded="true" />
       <my-button title="Hello Green" color="green" />
