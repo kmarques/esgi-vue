@@ -9,6 +9,7 @@ app.use(cors());
 app.use(
   tracker({
     APP_ID: "5IW4",
+    service: "microservice-billing",
   })
 );
 
